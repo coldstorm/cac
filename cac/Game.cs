@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,10 +20,36 @@ namespace cac
         {
             this.Players = new List<Player>();
             this.State = GameState.Lobby;
-            this.WhiteDeck = new List<WhiteCard>();
-            this.BlackDeck = new List<BlackCard>();
+            this.WhiteDeck = LoadWhiteDeck("/data/white.txt");
+            this.BlackDeck = LoadBlackDeck("/data/black.txt");
 
             this.Settings = new GameSettings(parameters);
+        }
+
+        public List<WhiteCard> LoadWhiteDeck(string path)
+        {
+            List<WhiteCard> deck = new List<WhiteCard>();
+            StreamReader sr = new StreamReader(path);
+
+            while (!sr.EndOfStream)
+            {
+                deck.Add(new WhiteCard("none", sr.ReadLine()));
+            }
+
+            return deck;
+        }
+
+        public List<BlackCard> LoadBlackDeck(string path)
+        {
+            List<BlackCard> deck = new List<BlackCard>();
+            StreamReader sr = new StreamReader(path);
+
+            while (!sr.EndOfStream)
+            {
+                deck.Add(new BlackCard("none", sr.ReadLine()));
+            }
+
+            return deck;
         }
 
         public void Start()

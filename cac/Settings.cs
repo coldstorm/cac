@@ -12,6 +12,8 @@ namespace cac
 
         public int PlayerLimit;
 
+        public List<string> AllowedExpansions;
+
         public GameSettings(string[] parameters)
         {
             this.ScoreLimit = Constants.DEFAULT_SCORE_LIMIT;
