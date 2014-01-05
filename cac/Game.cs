@@ -20,8 +20,8 @@ namespace cac
         {
             this.Players = new List<Player>();
             this.State = GameState.Lobby;
-            this.WhiteDeck = LoadWhiteDeck("/data/white.txt");
-            this.BlackDeck = LoadBlackDeck("/data/black.txt");
+            this.WhiteDeck = this.LoadWhiteDeck("/data/white.txt");
+            this.BlackDeck = this.LoadBlackDeck("/data/black.txt");
 
             this.Settings = new GameSettings(parameters);
         }
@@ -59,19 +59,33 @@ namespace cac
                 return;
             }
 
-            // Players should have already joined the game by this point.
-            this.State = GameState.Dealing;
-
             // Shuffle decks
-            Helper.Shuffle(WhiteDeck);
-            Helper.Shuffle(BlackDeck);
+            this.WhiteDeck.Shuffle();
+            this.BlackDeck.Shuffle();
+
+            // Players should have already joined the game by this point.
+            this.DealingState();
+        }
+
+        public void DealingState()
+        {
+            this.State = GameState.Dealing;
 
             // Deal cards
             foreach (Player player in this.Players)
             {
-                DealCards(player);
+                this.DealCards(player);
             }
 
+            // Choose current black card
+            this.CurrentCard = this.BlackDeck[this.BlackDeck.Count];
+            this.BlackDeck.RemoveAt(this.BlackDeck.Count);
+
+            this.PlayingState();
+        }
+
+        private void PlayingState()
+        {
             this.State = GameState.Playing;
         }
 
@@ -98,7 +112,7 @@ namespace cac
                    this.WhiteDeck.Count > 0)
             {
                 player.Hand.Add(this.WhiteDeck[this.WhiteDeck.Count]);
-                this.WhiteDeck.Remove(this.WhiteDeck[this.WhiteDeck.Count]);
+                this.WhiteDeck.RemoveAt(this.WhiteDeck.Count);
             }
         }
     }
