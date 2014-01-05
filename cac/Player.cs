@@ -9,13 +9,15 @@ namespace cac
 {
     public class Player
     {
-        private User User;
+        public User User { get;  private set; }
         public List<WhiteCard> Hand;
+        public int Points;
 
         public Player(User user)
         {
             this.User = user;
             this.Hand = new List<WhiteCard>();
+            this.Points = 0;
         }
     }
 }
