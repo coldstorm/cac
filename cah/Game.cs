@@ -13,19 +13,34 @@ namespace cah
         private BlackCard CurrentCard;
         private List<WhiteCard> WhiteDeck;
         private List<BlackCard> BlackDeck;
+        private GameSettings Settings;
 
-        public Game(string[] settings)
+        public Game(string[] parameters)
         {
             this.Players = new List<Player>();
             this.State = GameState.Lobby;
             this.WhiteDeck = new List<WhiteCard>();
             this.BlackDeck = new List<BlackCard>();
+
+            this.Settings = new GameSettings(parameters);
         }
 
         public void Start()
         {
             // Players should have already joined the game by this point.
             this.State = GameState.Dealing;
+
+            // Shuffle decks
+            Helper.Shuffle(WhiteDeck);
+            Helper.Shuffle(BlackDeck);
+
+            // Deal cards
+            foreach (Player player in this.Players)
+            {
+                DealCards(player);
+            }
+
+            this.State = GameState.Playing;
         }
 
         public void AddPlayer(Player player)
@@ -41,6 +56,16 @@ namespace cah
             if (this.Players.Contains(player))
             {
                 this.Players.Remove(player);
+            }
+        }
+
+        public void DealCards(Player player)
+        {
+            while (player.Hand.Count <= Constants.MAX_HAND && 
+                   this.WhiteDeck.Count > 0)
+            {
+                player.Hand.Add(this.WhiteDeck[this.WhiteDeck.Count]);
+                this.WhiteDeck.Remove(this.WhiteDeck[this.WhiteDeck.Count]);
             }
         }
     }

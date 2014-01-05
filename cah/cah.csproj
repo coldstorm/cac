@@ -43,11 +43,14 @@
   <ItemGroup>
     <Compile Include="BlackCard.cs" />
     <Compile Include="Card.cs" />
+    <Compile Include="Constants.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="GameState.cs" />
+    <Compile Include="Helper.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings.cs" />
     <Compile Include="WhiteCard.cs" />
   </ItemGroup>
   <ItemGroup>
