@@ -11,5 +11,7 @@ namespace cac
         public const string GAME_CHANNELNAME = "#cah";
         public const int MAX_HAND = 10;
         public const int MIN_PLAYERS = 3;
+        public const int DEFAULT_SCORE_LIMIT = 8;
+        public const int DEFAULT_PLAYER_LIMIT = 6;
     }
 }
