@@ -8,6 +8,8 @@ namespace cah
 {
     public class Constants
     {
+        public const string GAME_CHANNELNAME = "#cah";
         public const int MAX_HAND = 10;
+        public const int MIN_PLAYERS = 3;
     }
 }

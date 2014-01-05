@@ -27,6 +27,11 @@ namespace cah
 
         public void Start()
         {
+            if (this.Players.Count < Constants.MIN_PLAYERS)
+            {
+                return;
+            }
+
             // Players should have already joined the game by this point.
             this.State = GameState.Dealing;
 
@@ -45,7 +50,8 @@ namespace cah
 
         public void AddPlayer(Player player)
         {
-            if (!this.Players.Contains(player))
+            if (!this.Players.Contains(player) &&
+                this.Players.Count < this.Settings.PlayerLimit)
             {
                 this.Players.Add(player);
             }
