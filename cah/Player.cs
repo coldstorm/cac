@@ -9,12 +9,12 @@ namespace cah
 {
     public class Player
     {
-        private User _user;
+        private User User;
         public List<WhiteCard> Hand;
 
         public Player(User user)
         {
-            this._user = user;
+            this.User = user;
             this.Hand = new List<WhiteCard>();
         }
     }

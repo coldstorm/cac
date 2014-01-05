@@ -8,7 +8,6 @@ namespace cah
 {
     public enum GameState
     {
-        None = 0,
         Lobby,
         Dealing,
         Playing,

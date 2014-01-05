@@ -8,5 +8,9 @@ namespace cah
 {
     public class WhiteCard : Card
     {
+        public WhiteCard(string expansion, string text) : base(expansion, text)
+        {
+
+        }
     }
 }
