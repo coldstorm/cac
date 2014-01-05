@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace cac
@@ -14,7 +15,9 @@ namespace cac
         private BlackCard CurrentCard;
         private List<WhiteCard> WhiteDeck;
         private List<BlackCard> BlackDeck;
+        private List<List<WhiteCard>> Table;
         private GameSettings Settings;
+        private Thread GameThread;
 
         public Game(string[] parameters)
         {
@@ -22,11 +25,13 @@ namespace cac
             this.State = GameState.Lobby;
             this.WhiteDeck = this.LoadWhiteDeck("/data/white.txt");
             this.BlackDeck = this.LoadBlackDeck("/data/black.txt");
+            this.Table = new List<List<WhiteCard>>();
 
             this.Settings = new GameSettings(parameters);
+            this.GameThread = new Thread(DealingState);
         }
 
-        public List<WhiteCard> LoadWhiteDeck(string path)
+        private List<WhiteCard> LoadWhiteDeck(string path)
         {
             List<WhiteCard> deck = new List<WhiteCard>();
             StreamReader sr = new StreamReader(path);
@@ -39,7 +44,7 @@ namespace cac
             return deck;
         }
 
-        public List<BlackCard> LoadBlackDeck(string path)
+        private List<BlackCard> LoadBlackDeck(string path)
         {
             List<BlackCard> deck = new List<BlackCard>();
             StreamReader sr = new StreamReader(path);
@@ -63,11 +68,10 @@ namespace cac
             this.WhiteDeck.Shuffle();
             this.BlackDeck.Shuffle();
 
-            // Players should have already joined the game by this point.
-            this.DealingState();
+            this.GameThread.Start();
         }
 
-        public void DealingState()
+        private void DealingState()
         {
             this.State = GameState.Dealing;
 
@@ -87,6 +91,18 @@ namespace cac
         private void PlayingState()
         {
             this.State = GameState.Playing;
+
+            while(this.Table.Count < this.Players.Count)
+            {
+                // Wait for players to submit their cards
+            }
+
+            this.JudgingState();
+        }
+
+        private void JudgingState()
+        {
+            this.State = GameState.Judging;
         }
 
         public void AddPlayer(Player player)
@@ -106,7 +122,7 @@ namespace cac
             }
         }
 
-        public void DealCards(Player player)
+        private void DealCards(Player player)
         {
             while (player.Hand.Count <= Constants.MAX_HAND && 
                    this.WhiteDeck.Count > 0)
