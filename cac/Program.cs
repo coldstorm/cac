@@ -12,7 +12,7 @@ namespace cac
         static void Main(string[] args)
         {
             Client client = new Client();
-            client.Connect("frogbox.es", 6667, false, new User("cah"));
+            client.Connect("frogbox.es", 6667, false, new User("cah", "FFFFFFCA", "Cards Against Coldstorm"));
             client.OnConnect += client_OnConnect;
             client.OnChannelJoin += client_OnChannelJoin;
 
