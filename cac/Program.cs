@@ -21,7 +21,7 @@ namespace cac
 
         static void client_OnConnect(Client client)
         {
-            client.JoinChannel(Constants.GAME_CHANNELNAME);
+            client.JoinChannel(Constants.GameChannelName);
         }
 
         static void client_OnChannelJoin(Client client, Channel channel)

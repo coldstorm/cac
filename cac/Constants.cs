@@ -8,10 +8,10 @@ namespace cac
 {
     public class Constants
     {
-        public const string GAME_CHANNELNAME = "#cah";
-        public const int MAX_HAND = 10;
-        public const int MIN_PLAYERS = 3;
-        public const int DEFAULT_SCORE_LIMIT = 8;
-        public const int DEFAULT_PLAYER_LIMIT = 6;
+        public const string GameChannelName = "#cah";
+        public const int MaxHand = 10;
+        public const int MinPlayers = 3;
+        public const int DefaultScoreLimit = 8;
+        public const int DefaultPlayerLimit = 6;
     }
 }

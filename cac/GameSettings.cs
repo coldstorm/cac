@@ -16,8 +16,8 @@ namespace cac
 
         public GameSettings(string[] parameters)
         {
-            this.ScoreLimit = Constants.DEFAULT_SCORE_LIMIT;
-            this.PlayerLimit = Constants.DEFAULT_PLAYER_LIMIT;
+            this.ScoreLimit = Constants.DefaultScoreLimit;
+            this.PlayerLimit = Constants.DefaultPlayerLimit;
         }
     }
 }

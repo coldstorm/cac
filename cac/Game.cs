@@ -59,7 +59,7 @@ namespace cac
 
         public void Start()
         {
-            if (this.Players.Count < Constants.MIN_PLAYERS)
+            if (this.Players.Count < Constants.MinPlayers)
             {
                 return;
             }
@@ -124,7 +124,7 @@ namespace cac
 
         private void DealCards(Player player)
         {
-            while (player.Hand.Count <= Constants.MAX_HAND && 
+            while (player.Hand.Count <= Constants.MaxHand && 
                    this.WhiteDeck.Count > 0)
             {
                 player.Hand.Add(this.WhiteDeck[this.WhiteDeck.Count]);
