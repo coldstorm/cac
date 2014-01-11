@@ -1,5 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -11,6 +11,8 @@
     <AssemblyName>cac</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -31,10 +33,6 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject>
-    </StartupObject>
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -49,12 +47,12 @@
     <Compile Include="Card.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="GameSettings.cs" />
     <Compile Include="GameState.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Settings.cs" />
     <Compile Include="WhiteCard.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -62,7 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\NetIRC\NetIRC\NetIRC.csproj">
-      <Project>{4aee2d87-d356-4ca1-ba02-7536b1af2b8c}</Project>
+      <Project>{4AEE2D87-D356-4CA1-BA02-7536B1AF2B8C}</Project>
       <Name>NetIRC</Name>
     </ProjectReference>
   </ItemGroup>
