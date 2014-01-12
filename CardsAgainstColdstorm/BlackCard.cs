@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CAC
+namespace CardsAgainstColdstorm
 {
-    public class WhiteCard : Card
+    public class BlackCard : Card
     {
-        public WhiteCard(string expansion, string text) : base(expansion, text)
+        public BlackCard(string expansion, string text) : base(expansion, text)
         {
 
         }

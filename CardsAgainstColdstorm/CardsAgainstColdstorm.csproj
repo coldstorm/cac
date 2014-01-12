@@ -7,8 +7,8 @@
     <ProjectGuid>{21A0AE4A-8B9E-4B17-8A93-C550E49F0960}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CAC</RootNamespace>
-    <AssemblyName>CAC</AssemblyName>
+    <RootNamespace>CardsAgainstColdstorm</RootNamespace>
+    <AssemblyName>CardsAgainstColdstorm</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <ProductVersion>10.0.0</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
